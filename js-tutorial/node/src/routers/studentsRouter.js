@@ -39,6 +39,7 @@ router.get("/:id", (req, res) => {
     return res.status(200).send(searchedStudent);
 });
 
+// INSERT
 router.put("/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const {
@@ -64,6 +65,7 @@ router.put("/:id", (req, res) => {
     return res.status(200).send(newStudent);
 });
 
+// DELETE
 router.delete("/:id", (req, res) => {
     const id = parseInt(req.params.id);
 
