@@ -8,13 +8,13 @@ import {
 
 function App() {
   return (
-    <Route>
+    <Router>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
       </Switch>
-    </Route>
+    </Router>
   );
 }
 
