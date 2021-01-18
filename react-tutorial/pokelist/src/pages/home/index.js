@@ -96,7 +96,7 @@ function FirstTable(props) {
 }
 
 /**
- * This element displays all the starred (favoritados) pokemons from FirstTable
+ * This element displays all the starred (favoritados) pokemons from FirstTable.
  * @param {*} props
  */
 function SecondTable(props) {
