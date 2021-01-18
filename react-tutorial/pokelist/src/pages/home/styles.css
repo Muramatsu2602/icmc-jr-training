@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+}
+
+.title {
+  background-color: blueviolet; /* Helps you identify divs, their borders and etc*/
+}
+
+.header {
+  background-color: aquamarine; /* Helps you identify divs, their borders and etc*/
+}
+
+.body {
+    background-color: chocolate;
+    display: flex;
+}
+
+.firstTable {
+  background-color: brown; /* Helps you identify divs, their borders and etc*/
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+
+.secondTable {
+  background-color: burlywood; /* Helps you identify divs, their borders and etc*/ 
+}
+
+.subtitle {
+  background-color: chartreuse; /* Helps you identify divs, their borders and etc*/
+}
