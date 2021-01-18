@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-/**
- * useState -> consegue saber quando certa variavel foi alterada
- * useEffect -> vc passa uma funcao nele
- *  - la, quando o componente for carregado, ele vai disparar
- */
+import React, { useState, useEffect } from "react";
+
+import "./styles.css";
 
 function Header() {
-  return <div></div>;
+  return (
+    <div className="header">
+      <h1 className="title">PokeList</h1>
+    </div>
+  );
 }
 
+/**
+ * This will display all pokemons from PokeApi in a simple HTML <table>
+ * @param {*} props
+ */
 function FirstTable(props) {
-  const [pokeList, setPokelist] = useState([]);
+  const [pokeList, setPokeList] = useState([]);
   const [pokeListOffset, setPokeListOffset] = useState(0);
 
   const fetchData = async () => {
@@ -19,15 +24,14 @@ function FirstTable(props) {
       const response = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/?offset=${pokeListOffset}&limit=20`
       );
-
       let vetor = [];
       for (const pokemon of response.data.results) {
         const _response = await axios.get(pokemon.url);
         vetor.push(_response.data);
       }
-      setPokelist(vetor.data);
+      setPokeList(vetor);
     } catch (e) {
-      console.log(e.message);
+      console.log(e);
     }
   };
 
@@ -36,7 +40,7 @@ function FirstTable(props) {
   }, [pokeListOffset]);
 
   return (
-    <div>
+    <div className="firstTable">
       <table>
         <tr>
           <th>Name</th>
@@ -55,29 +59,26 @@ function FirstTable(props) {
                     return type.type.name + " ";
                   })}
                 </td>
-
                 <td>{pokemon.weight}</td>
-
                 <td>
-                  <img src={pokemon.sprites.font_default} />
+                  <img src={pokemon.sprites.front_default} />
                 </td>
-
                 <td>
-                  {props.searchPokemon(pokemon) ? (
+                  {props.pokeController.searchPokemon(pokemon) ? (
                     <a
                       href="#"
                       onClick={() =>
                         props.pokeController.deletePokemon(pokemon)
                       }
                     >
-                      Desfavoritar
+                      Unfav
                     </a>
                   ) : (
                     <a
                       href="#"
                       onClick={() => props.pokeController.savePokemon(pokemon)}
                     >
-                      Favoritar
+                      Fav
                     </a>
                   )}
                 </td>
@@ -87,33 +88,119 @@ function FirstTable(props) {
       </table>
       <div>
         <a href="#" onClick={() => setPokeListOffset(pokeListOffset + 20)}>
-          Next
+          Próxima
         </a>
       </div>
     </div>
   );
 }
 
-function SecondTable() {
-  return <div></div>;
+/**
+ * This element displays all the starred (favoritados) pokemons from FirstTable
+ * @param {*} props
+ */
+function SecondTable(props) {
+  return (
+    <div className="secondTable">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Unfav</th>
+        </tr>
+        {props.favPokeList.length > 0 &&
+          props.favPokeList.map((pokemon) => {
+            return (
+              <tr>
+                <td>{pokemon.name}</td>
+                <td>
+                  <img src={pokemon.sprites.front_default} />
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    onClick={() => props.pokeController.deletePokemon(pokemon)}
+                  >
+                    Unfav
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
+      </table>
+    </div>
+  );
 }
 
+/**
+ * handles all the CRUD functions regarding the functionality of the site
+ * @param {*} props
+ */
 function Body(props) {
   const [favPokeList, setFavPokeList] = useState([]);
   const [pokeController, setPokeController] = useState({
-    savePokemon: (pokemon) => {},
-    deletePokemon: (pokemon) => {},
-    searchPokemon: (pokemon) => {},
+    /**
+     * Saves the chosen element as a favourite in local Storage
+     * @param {*} pokemon
+     */
+    savePokemon: (pokemon) => {
+      // let vetor = favPokeList.slice();
+      let vetor =
+        localStorage.getItem("favoritesPokemons") != null
+          ? JSON.parse(localStorage.getItem("favoritesPokemons")).list
+          : [];
+      vetor.push(pokemon);
+      setFavPokeList(vetor);
+      localStorage.setItem(
+        "favoritesPokemons",
+        JSON.stringify({ list: vetor })
+      ); // pode ser aqui
+    },
+    /**
+     * Deletes untoggles o pokemon thus makes it not favourite
+     * @param {*} pokemon
+     */
+    deletePokemon: (pokemon) => {
+      // let vetor = favPokeList.filter(_pokemon => _pokemon.name != pokemon.name);
+      let vetor =
+        localStorage.getItem("favoritesPokemons") != null
+          ? JSON.parse(localStorage.getItem("favoritesPokemons")).list
+          : [];
+      vetor = vetor.filter((_pokemon) => _pokemon.name != pokemon.name);
+      setFavPokeList(vetor);
+      localStorage.setItem(
+        "favoritesPokemons",
+        JSON.stringify({ list: vetor })
+      );
+    },
+    /**
+     * simple search function for all pokemons saved as favourites
+     * @param {*} pokemon
+     */
+    searchPokemon: (pokemon) => {
+      const vetor =
+        localStorage.getItem("favoritesPokemons") != null
+          ? JSON.parse(localStorage.getItem("favoritesPokemons")).list
+          : [];
+      for (const _pokemon of vetor) {
+        if (pokemon.name == _pokemon.name) return true;
+      }
+      return false;
+    },
   });
 
   useEffect(() => {
-    setFavPokeList(JSON.parse(localStorage.getItem("favoritesPokemons")));
+    const list =
+      localStorage.getItem("favoritesPokemons") != null
+        ? JSON.parse(localStorage.getItem("favoritesPokemons")).list
+        : [];
+    setFavPokeList(list);
   }, []);
 
   return (
-    <div>
-      <FirstTable favPokelist={favPokeList} pokeController={pokeController} />
-      <SecondTable favPokelist={favPokeList} pokeController={pokeController} />
+    <div className="body">
+      <FirstTable favPokeList={favPokeList} pokeController={pokeController} />
+      <SecondTable favPokeList={favPokeList} pokeController={pokeController} />
     </div>
   );
 }
@@ -122,11 +209,10 @@ function Home() {
   return (
     <div>
       <Header />
-      <h2></h2>
-      <Body>
-        <FirstTable />
-        <SecondTable />
-      </Body>
+      <h2 className="subtitle">Sua lista de pokemons</h2>
+      <div>
+        <Body className="corpo" />
+      </div>
     </div>
   );
 }

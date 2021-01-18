@@ -20,3 +20,5 @@
 
 #3 quando usar
   const [pokeController, setPokeController] = useState({
+
+#4 Sobre o props (cria a variavel onde, pra que serve, eh todo parametro de uma funcao)
