@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 
 import "./styles.css";
 
+/**
+ * displays header for our application
+ */
 function Header() {
   return (
     <div className="header">
@@ -96,7 +99,7 @@ function FirstTable(props) {
 }
 
 /**
- * This element displays all the starred (favoritados) pokemons from FirstTable.
+ * This element displays all the starred (favoritados) pokemons from FirstTable
  * @param {*} props
  */
 function SecondTable(props) {
