@@ -11,3 +11,12 @@
 ================================================================================>
 #1 - Posso substituir qualquer arquivo .js por um .ts?
 ## Quais as vantagens de cada um? Qual dos dois eh preferencia da ICMC Jr?
+## E o .tsx?
+
+#2 - O que significa
+
+    {...props.children }
+
+
+#3 quando usar
+  const [pokeController, setPokeController] = useState({
