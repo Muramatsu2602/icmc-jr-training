@@ -44,3 +44,24 @@
   }, [pokeListOffset]); // referencia esta variavel (esta em observacao)
 
 [end]
+
+# 6 Async e Await
+
+[js]
+  async function getUser(){
+    
+    try{
+      const response = await axios.get('/user?ID=12345'); // se nao coloca --> so chama e nao espera acabar
+                                                          // vai postando e fznd outras coisas 
+                                                          // pq a request pode vir do outro lado do mundo e tals
+      console.log(response);
+    }catch(eror){
+      console.error(error);
+    }
+   
+  }
+[end]
+
+
+JSON.stringify --> becomes JSON
+JSON.parse --> becomes OBJECT
