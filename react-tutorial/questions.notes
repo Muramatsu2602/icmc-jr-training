@@ -4,14 +4,16 @@
 ================================================================================>
 #1 - O que o Axios Faz
 - Um framework que permite fzr get-requests e ter acesso `as respostas
-
+- 
 
 
 *PARA O DIA 19*
 ================================================================================>
 #1 - Posso substituir qualquer arquivo .js por um .ts?
 ## Quais as vantagens de cada um? Qual dos dois eh preferencia da ICMC Jr?
+- JS eh mais rapido pra aprender
 ## E o .tsx?
+- 
 
 #2 - O que significa
 
@@ -19,6 +21,26 @@
 
 
 #3 quando usar
-  const [pokeController, setPokeController] = useState({
+  const [pokeController, setPokeController] = useState({});
+
+  !answer!: 
+  - pq tem esse vetor com duas variaveis? Vc usa ele simplismente para declarar variaveis
+  - quando a alteracao eh feita em certa variavel --> o useState trackeia
+  - tipo um OnChange()
+
+  - setPokeList --> toda vez que faz a alteracao
+  - pokeList --> tipo um get, eh pra vc usar o valor dela
 
 #4 Sobre o props (cria a variavel onde, pra que serve, eh todo parametro de uma funcao)
+- ....
+
+# 5 Sobre useEffect
+
+[js]
+
+  useEffect(() => {
+    // quando abre-se a pagina, rodamos o fetchData()
+    fetchData();
+  }, [pokeListOffset]); // referencia esta variavel (esta em observacao)
+
+[end]

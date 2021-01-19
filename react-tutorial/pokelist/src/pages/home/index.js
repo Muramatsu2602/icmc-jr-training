@@ -39,8 +39,9 @@ function FirstTable(props) {
   };
 
   useEffect(() => {
+    // quando abre-se a pagina, rodamos o fetchData()
     fetchData();
-  }, [pokeListOffset]);
+  }, [pokeListOffset]); // referencia esta variavel (esta em observacao)
 
   return (
     <div className="firstTable">
