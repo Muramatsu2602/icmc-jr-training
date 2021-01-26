@@ -65,3 +65,9 @@
 
 JSON.stringify --> becomes JSON
 JSON.parse --> becomes OBJECT
+
+=================>
+Toda vez que for dar clone em repo (evita que node_modules de merda cross-plataform)
+[bash]
+  npm install 
+[end]
