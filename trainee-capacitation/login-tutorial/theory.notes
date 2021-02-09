@@ -1,0 +1,5 @@
+# Intro
+
+- Senha Criptografada
+- back end gera um token jwt (uma criptografia que contem o id do usuario e tals)
+    - JSON web token 
