@@ -1,3 +1,23 @@
 [2021-02-09]
 Camalearning on Web Dev:
 - By Marcus Rodrigues
+
+Topics:
+
+- CSS:
+    - responsiveness
+    - grid
+    - flexbox
+
+- Permite modularidade:
+- "Services.module.css"
+- pode repetir classes fora do .css
+
+- 1 rem --> 1 x font-size
+
+- a different way of calling ClassName:
+    - import styles from "../../styles.css"
+    - ClassName={styles.hero_section}
+
+- -webkit-text:
+    - changing font aspect, but varies from browser to browser
