@@ -29,4 +29,27 @@ Collact:
                 - PUSH: 
                     - Firebase pro android (mas manda pra IOS)
                 
+            - dashboard web:
+                - deixa mais regras
+                - "quero presentear o cliente quando é aniversario da mae dele"
+                - Mecanicas de fidelidade
+- data science e ML na Collact:
+    - Nao, so varios ifs pra construir regras de fidelidade
+    - ML as vezes nao eh transparente pro nosso usuario
 
+- Instagram:
+    - ordem de relevancia, nao mais timeline
+
+- future:
+    - interacao com o app STONE:
+    - centraliza bank, credito, serie de coisas
+    - controle todo que um lojista necessita
+=======================================================================>
+
+WORKSHOP:
+- VM:
+    - a menos que vc queira saber, no difference
+- Cloud:
+    - questoes de estabilidade e cloud:
+        - aplicacao inteira no pc de vcs E SO AI NO CLOUD
+        - "funciona na minha maquina e nao la" ... ok
