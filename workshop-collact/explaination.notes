@@ -1,0 +1,32 @@
+[2021-02-17]
+
+Collact:
+- Nasceu pra aproximar o consumidor dos seus estabelecimentos favoritos
+- migrou de tablet, qr code e outros modos de fazer essa aproximacao
+- 2018: integrou o produto ao pagamento:
+    - pra ganhar pontos do programa de fidelidade (POS da STONE)
+        - ha app dentro da maquininha
+- Resumo:
+    - programa de fidelidade
+    - promocoes automatizadas:
+        - oferta direcionada para pessoas com habitos diferentes
+        - chama fluxo
+        - manutencao de horario de baixo fluxo
+    - avaliacoes exclusivas:
+        - logo apos o pagamento
+        - S920 (maquininha, POS) -> tem S.O qualquer
+            - programacao web la dentro:
+        - como funciona?
+            - vincula telefone cadastrado ao cartao:
+                - manda um !SMS! que manda para pagina app.collact.br
+                - deep link (quer abrir no app ou no site?)
+                - nao precisa de app nativo
+            - Disparo de SMS eh mais barato que zap:
+            - Tres disparos:  email, wpp, etc
+                - servico pra isso (transmissoes)
+                - spart post
+                - waver (gater sms)
+                - PUSH: 
+                    - Firebase pro android (mas manda pra IOS)
+                
+
