@@ -53,3 +53,12 @@ WORKSHOP:
     - questoes de estabilidade e cloud:
         - aplicacao inteira no pc de vcs E SO AI NO CLOUD
         - "funciona na minha maquina e nao la" ... ok
+====================================================>
+- CPU nao aguenta milhoes  de requests por segundo
+- varias API simultaneas:
+    - balancer:
+        - API.nusc.br -> chama o endereco da API, bate no balancer que redireciona o trafego
+        - nao pode delegar isso ao front
+        - ALB:
+            - AWS -> App que gerencia o balancer (RDS)
+    - escalabilidade
