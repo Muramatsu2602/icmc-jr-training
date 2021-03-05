@@ -1,0 +1,20 @@
+# React Native by Gabriel Marin
+
+O que eh React-Native:
+- Framework para desenvolvimento de aplicativos, utilizando 
+Javascript e JSX
+- A principal diferenca de desenvolver apps em react-native do que em outros
+frameworks eh a flexibilidade do codigo. O aplicativo feito nessa
+tecnologia, funciona em ambos sistemas IOS e android.
+
+React DOM:
+- APP = servidor
+- React Virtual DOM = React-Native (JS)
+
+Codigo Nativo:
+- JSX -> codigo nativo
+- !React Native tem tags proprias!
+
+Requisitos:
+- Node.JS
+- Expo
