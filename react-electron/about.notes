@@ -12,3 +12,11 @@ Problemas:
 - So pode carregar um arquivo ou uma URL
 - para nao precisar rodar um servidor no computador do cliente, existe o Electrate, que permite exportar como html um site 
 - desenvolvido em react
+
+
+================================================================>
+
+Electrate:
+- Babel: React Puro -> HTML/JS sem precisar rodar um servidor
+- consegue transformar seu site de REACT par JS
+- assim, da pra abrir diretamente um arquivo index.html, sem precisar rodar o site online ou na maquina do cliente
