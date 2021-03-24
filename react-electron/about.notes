@@ -1,3 +1,8 @@
+No Notion:
+https://www.notion.so/icmcjunior/Electron-9c3d66aa2fd84fa29fd207412e272d76
+
+===========================================================>
+
 O que eh Electron:
 - framework que permite app desktop com JS, HTML, CSS.
 - Tais apps podem rodar direto no MacOS, Windows ou Linux
@@ -20,3 +25,11 @@ Electrate:
 - Babel: React Puro -> HTML/JS sem precisar rodar um servidor
 - consegue transformar seu site de REACT par JS
 - assim, da pra abrir diretamente um arquivo index.html, sem precisar rodar o site online ou na maquina do cliente
+
+================================================================>
+
+*Pra quem quer se aprofundar*
+
+Curso: https://www.alura.com.br/curso-online-electron
+Fórum: https://cursos.alura.com.br/forum/curso-electron/todos/0
+Documentacao: https://www.electronjs.org/docs
