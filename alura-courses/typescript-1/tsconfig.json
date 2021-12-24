@@ -2,7 +2,8 @@
 	"compilerOptions": {
 		"outDir": "dist/js",
 		"target": "ES6",
-		"noEmitOnError": true // won't generate files if there's a bug
+		"noEmitOnError": true, // won't generate files if there's a bug
+		"noImplicitAny": true
 	},
 	"include": ["app/**/*"]
 }
