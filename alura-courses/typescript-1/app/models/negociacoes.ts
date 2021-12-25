@@ -7,8 +7,8 @@ export class Negociacoes {
 		this.negociacoes.push(negociacao)
 	}
 
-	lista(): Array<Negociacao> {
-		return [...this.negociacoes] // take every item in this list and put in a NEW list
-                                     // thus, the original negociacoes is NOT affected
+	lista(): ReadonlyArray<Negociacao> {
+		return this.negociacoes // take every item in this list and put in a NEW list
+                                // thus, the original negociacoes is NOT affected
 	}
 }
