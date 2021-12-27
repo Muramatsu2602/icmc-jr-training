@@ -1,9 +1,8 @@
-import { NegociacaoController } from './controllers/negociacao-controller.js' // ALWAYS place .js in the end
+import { NegociacaoController } from './controllers/negociacao-controller.js';
 
-const controller = new NegociacaoController()
-const form = document.querySelector('.form')
-
-form.addEventListener('submit', (event: Event) => {
-	event.preventDefault()
-	controller.adiciona()
-})
+const controller = new NegociacaoController();
+const form = document.querySelector('.form');
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    controller.adiciona();
+});

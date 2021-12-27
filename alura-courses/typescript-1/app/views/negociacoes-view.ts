@@ -1,15 +1,16 @@
-import { Negociacoes } from './../models/negociacoes.js'
+import { Negociacoes } from '../models/negociacoes.js';
+
 export class NegociacoesView {
-	private elemento: HTMLElement
 
-	constructor(seletor: string) {
-		this.elemento = document.querySelector(seletor)
-	}
+    private elemento: HTMLElement;
 
-	// returns HTML string + fused data
-	template(model: Negociacoes): string {
-		return `
-        <table class="table table-hover table-bordered>
+    constructor(seletor: string) {
+        this.elemento = document.querySelector(seletor);
+    }
+
+    template(model: Negociacoes): string {
+        return `
+        <table class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <th>DATA</th>
@@ -18,29 +19,29 @@ export class NegociacoesView {
                 </tr>
             </thead>
             <tbody>
-                ${model
-					.lista()
-					.map((negociacao) => {
-						return `
+                ${model.lista().map(negociacao => {
+                    return `
                         <tr>
-                            <td>${new Intl.DateTimeFormat().format(
-								negociacao.data
-							)}</td>
-                            <td>${negociacao.quantidade}</td>
-                            <td>${negociacao.valor}</td>
+                            <td>${new Intl.DateTimeFormat()
+                                .format(negociacao.data)}
+                            </td>
+                            <td>
+                                ${negociacao.quantidade}
+                            </td>
+                            <td>
+                                ${negociacao.valor}
+                            </td>
                         </tr>
-                    `
-					})
-					.join('')}
+                    `;
+                }).join('')}
             </tbody>
         </table>
-        `
-	}
+        `;
+    }
 
-	// render template in the captured element in constructor
-	update(model: Negociacoes): void {
-		const template = this.template(model)
-		console.log(template)
-		this.elemento.innerHTML = template
-	}
+    update(model: Negociacoes): void {
+        const template = this.template(model);
+        console.log(template);
+        this.elemento.innerHTML = template;
+    }
 }
