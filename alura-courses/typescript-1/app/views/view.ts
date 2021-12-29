@@ -1,4 +1,5 @@
-export class View<T> {
+// abstract --> cannot be initialized, but its children can
+export abstract class View<T> {
 	// protected --> inherited classes may access it
 	protected element: HTMLElement
 
@@ -11,7 +12,5 @@ export class View<T> {
 		this.element.innerHTML = template
 	}
 
-	template(model: T): string {
-		throw Error('Child class must be implement template()')
-	}
+	abstract template(model: T): string
 }
