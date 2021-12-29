@@ -1,4 +1,4 @@
-export class View {
+export class View<T> {
 	// protected --> inherited classes may access it
 	protected element: HTMLElement
 
@@ -6,12 +6,12 @@ export class View {
 		this.element = document.querySelector(seletor)
 	}
 
-	update(model: string): void {
+	update(model: T): void {
 		const template = this.template(model)
 		this.element.innerHTML = template
 	}
 
-	template(model: string): string {
+	template(model: T): string {
 		throw Error('Child class must be implement template()')
 	}
 }
