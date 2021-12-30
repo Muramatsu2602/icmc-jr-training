@@ -1,3 +1,4 @@
+import { Weekday } from './../enums/weekdays.js';
 import { Negociacao } from '../models/negociacao.js'
 import { Negociacoes } from '../models/negociacoes.js'
 import { MensagemView } from '../views/mensagem-view.js'
@@ -8,6 +9,7 @@ export class NegociacaoController {
 	private inputQuantidade: HTMLInputElement
 	private inputValor: HTMLInputElement
 	private negociacoes = new Negociacoes()
+
 	// views
 	private negociacoesView = new NegociacoesView('#negociacoesView')
 	private mensagemView = new MensagemView('#mensagemView')
@@ -21,9 +23,22 @@ export class NegociacaoController {
 
 	public adiciona(): void {
 		const negociacao = this.criaNegociacao()
+
+		// testing if business days
+		if (!this.isBusinessDay(negociacao.data)) {
+			this.mensagemView.update(
+				'Only negotiations done within business days are accepted!'
+			)
+			return
+		}
+
 		this.negociacoes.adiciona(negociacao)
 		this.limparFormulario()
 		this.atualizaView()
+	}
+
+	private isBusinessDay(date: Date): boolean {
+		return date.getDay() > Weekday.SUNDAY && date.getDay() < Weekday.SATURDAY
 	}
 
 	private criaNegociacao(): Negociacao {
