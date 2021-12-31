@@ -1,35 +1,28 @@
-// abstract --> cannot be initialized, but its children can
 export abstract class View<T> {
-	// protected --> inherited classes may access it
-	protected element: HTMLElement
-	private scape: boolean = false
 
-	// ? --> optional parameter
-	// WARNING: optional parameters should ALWAYS be the last ones in a method header
-	constructor(seletor: string, scape?: boolean) {
-		const element = document.querySelector(seletor)
+    protected elemento: HTMLElement;
+    private escapar = false;
 
-		if (element) {
-			this.element = element as HTMLElement
-		} else {
-			throw Error(`Selector ${seletor} does not exist in DOM.`)
-		}
+    constructor(seletor: string, escapar?: boolean) {
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            this.elemento = elemento as HTMLElement;
+        } else {
+            throw Error(`Seletor ${seletor} não existe no DOM. Verifique`);
+        }
+        if (escapar) {
+            this.escapar = escapar;
+        }
+    }
 
-		// whenever we have an optional parameter, use this
-		// otherwise, it will asume 'undefined'
-		if (scape) this.scape = scape
-	}
+    public update(model: T): void {
+        let template = this.template(model);
+        if (this.escapar) {
+            template = template
+                .replace(/<script>[\s\S]*?<\/script>/, '');
+        }
+        this.elemento.innerHTML = template;
+    }
 
-	public update(model: T): void {
-		let template = this.template(model)
-
-		// protecting our template against
-		// malicious scripts
-		if (this.scape) {
-			template = template.replace(/<script>[\s\S]*?<\/script>/, '')
-		}
-		this.element.innerHTML = template
-	}
-
-	protected abstract template(model: T): string
+    protected abstract template(model: T): string;
 }
