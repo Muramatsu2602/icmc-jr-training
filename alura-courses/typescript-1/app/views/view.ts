@@ -7,7 +7,13 @@ export abstract class View<T> {
 	// ? --> optional parameter
 	// WARNING: optional parameters should ALWAYS be the last ones in a method header
 	constructor(seletor: string, scape?: boolean) {
-		this.element = document.querySelector(seletor)
+		const element = document.querySelector(seletor)
+
+		if (element) {
+			this.element = element as HTMLElement
+		} else {
+			throw Error(`Selector ${seletor} does not exist in DOM.`)
+		}
 
 		// whenever we have an optional parameter, use this
 		// otherwise, it will asume 'undefined'
