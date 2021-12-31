@@ -6,3 +6,8 @@ form.addEventListener('submit', (event) => {
 	event.preventDefault()
 	controller.adiciona()
 })
+
+
+
+// one variable --> multiple allowed data types
+// const x: string | number | boolean = true

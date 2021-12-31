@@ -4,8 +4,14 @@ export abstract class View<T> {
 	protected element: HTMLElement
 	private scape: boolean = false
 
-	constructor(seletor: string, scape: boolean) {
+	// ? --> optional parameter
+	// WARNING: optional parameters should ALWAYS be the last ones in a method header
+	constructor(seletor: string, scape?: boolean) {
 		this.element = document.querySelector(seletor)
+
+		// whenever we have an optional parameter, use this
+		// otherwise, it will asume 'undefined'
+		if (scape) this.scape = scape
 	}
 
 	public update(model: T): void {
