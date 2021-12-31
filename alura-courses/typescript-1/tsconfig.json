@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outDir": "dist/js",
+		"outDir": "app/dist/js",
 		"target": "ES6",
 		"noEmitOnError": true, // won't generate files if there's a bug
 		"noImplicitAny": true,
