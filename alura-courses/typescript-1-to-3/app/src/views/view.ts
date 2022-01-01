@@ -26,6 +26,7 @@ export abstract class View<T> {
 		const t2 = performance.now()
 
 		console.log(`execution time for update() ${(t2 - t1) / 1000}`)
+        
 	}
 
 	protected abstract template(model: T): string
