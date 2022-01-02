@@ -1,3 +1,6 @@
+import { inspect } from '../decorators/inspect.js'
+import { LogExecTime } from '../decorators/log-exec-time.js'
+
 export abstract class View<T> {
 	protected elemento: HTMLElement
 	private escapar = false
@@ -14,6 +17,8 @@ export abstract class View<T> {
 		}
 	}
 
+	@inspect()
+	@LogExecTime(true)
 	public update(model: T): void {
 		let template = this.template(model)
 		if (this.escapar) {
