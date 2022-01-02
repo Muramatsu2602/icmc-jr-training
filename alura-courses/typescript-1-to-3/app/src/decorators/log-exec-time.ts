@@ -1,5 +1,5 @@
 // my first ever decorator in TS
-export function LogExecTime() {
+export function LogExecTime(inSeconds: boolean = false) {
 	return function (
 		target: any,
 		propertyKey: string,
@@ -10,7 +10,7 @@ export function LogExecTime() {
 			const t1 = performance.now()
 			const originalReturn = originalMethod.apply(this, args)
 			const t2 = performance.now()
-            
+
 			console.log(`${propertyKey}, execution time: ${(t2 - t1) / 1000}`)
 			originalReturn
 		}
