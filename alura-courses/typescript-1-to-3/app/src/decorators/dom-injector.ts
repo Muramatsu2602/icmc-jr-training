@@ -1,18 +1,25 @@
-export function domInjector(selector: string) {
-	return function (target: any, propertyKey: string) {
-		let element: HTMLElement | null = null
+export function domInjector(seletor: string) {
+    
+    return function(target: any, propertyKey: string) {
+        console.log(`Modificando protype ${target.constructor.name}
+             e adicionando getter para a propriedade ${propertyKey}`);
 
-		const getter = function () {
-			if (!element) {
-				// we're assuming that element shall not be null
-				const element = <HTMLElement>document.querySelector(selector)
-			}
+        let elemento: HTMLElement;
 
-			return element
-		}
+        const getter = function() {
+            if (!elemento) {
+                elemento = <HTMLElement>document.querySelector(seletor);
+                console.log(`buscando elemento do DOM com o seletor 
+                 ${seletor} para injetar em ${propertyKey}`);
+            }
+            
+            return elemento;
+        }
 
-		Object.defineProperty(target, propertyKey, {
-			get: getter,
-		})
-	}
+        Object.defineProperty(
+            target, 
+            propertyKey, 
+            { get: getter }
+        );
+    }
 }
