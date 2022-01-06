@@ -1,3 +1,4 @@
+import { TodaysNegotiation } from './../interfaces/todays-negotiation.js'
 import { inspect } from '../decorators/inspect.js'
 import { LogExecTime } from '../decorators/log-exec-time.js'
 import { DiasDaSemana } from '../enums/dias-da-semana.js'
@@ -47,10 +48,15 @@ export class NegociacaoController {
 	importaDados(): void {
 		fetch('http://localhost:8080/dados')
 			.then((res) => res.json())
-			.then((dados: any[]) => {
-				dados.map((data) => {
+			.then((dados: TodaysNegotiation[]) => {
+				return dados.map((data) => {
 					return new Negociacao(new Date(), data.vezes, data.montante)
 				})
+			})
+			.then((negociacoesToday) => {
+				for (let negociacao of negociacoesToday) {
+					this.negociacoes.adiciona(negociacao)
+				}
 			})
 	}
 
