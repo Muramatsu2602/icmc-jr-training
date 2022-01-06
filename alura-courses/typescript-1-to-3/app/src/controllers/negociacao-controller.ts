@@ -45,7 +45,13 @@ export class NegociacaoController {
 	}
 
 	importaDados(): void {
-		alert('hey')
+		fetch('http://localhost:8080/dados')
+			.then((res) => res.json())
+			.then((dados: any[]) => {
+				dados.map((data) => {
+					return new Negociacao(new Date(), data.vezes, data.montante)
+				})
+			})
 	}
 
 	private ehDiaUtil(data: Date) {
