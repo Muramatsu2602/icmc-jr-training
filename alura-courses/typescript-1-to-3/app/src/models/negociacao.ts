@@ -1,6 +1,7 @@
+import { Comparable } from '../interfaces/comparable.js'
 import { Printable } from '../utils/printable.js'
 
-export class Negociacao implements Printable {
+export class Negociacao implements Printable, Comparable<Negociacao> {
 	constructor(
 		private _data: Date,
 		public readonly quantidade: number,
@@ -30,6 +31,14 @@ export class Negociacao implements Printable {
 
 	public toText(): string {
 		return `Data: ${this.data},\nQuantidade: ${this.quantidade},\nValor: ${this.valor}`
+	}
+
+	public ehIgual(negociacao: Negociacao): boolean {
+		return (
+			this.data.getDate() === negociacao.data.getDate() &&
+			this.data.getMonth() === negociacao.data.getMonth() &&
+			this.data.getFullYear() === negociacao.data.getFullYear()
+		)
 	}
 }
 

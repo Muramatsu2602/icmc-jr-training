@@ -28,9 +28,6 @@ export class NegociacaoController {
 	@inspect
 	@logarTempoDeExecucao()
 	public adiciona(): void {
-		/*
-            Zé, você já viu isso?
-        */
 		const negociacao = Negociacao.criaDe(
 			this.inputData.value,
 			this.inputQuantidade.value,
@@ -53,6 +50,15 @@ export class NegociacaoController {
 	public importaDados(): void {
 		this.negociacoesService
 			.obterNegociacoesDoDia()
+			.then((negociacoesDeHoje) => {
+				return negociacoesDeHoje.filter((negociacaoDeHoje) => {
+					return !this.negociacoes
+						.lista()
+						.some((negociacao) =>
+							negociacao.ehIgual(negociacaoDeHoje)
+						)
+				})
+			})
 			.then((negociacoesDeHoje) => {
 				for (let negociacao of negociacoesDeHoje) {
 					this.negociacoes.adiciona(negociacao)
