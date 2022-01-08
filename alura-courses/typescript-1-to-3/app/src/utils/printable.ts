@@ -1,4 +1,4 @@
-export abstract class Printable {
-	constructor() {}
-	public abstract toText(): string
+// by default, every method in an interface is abstract
+export interface Printable {
+	toText(): string
 }
