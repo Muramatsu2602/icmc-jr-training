@@ -1,7 +1,6 @@
-import { Comparable } from '../interfaces/comparable.js'
-import { Printable } from '../utils/printable.js'
+import { Model } from '../interfaces/model.js'
 
-export class Negociacao implements Printable, Comparable<Negociacao> {
+export class Negociacao implements Model<Negociacao> {
 	constructor(
 		private _data: Date,
 		public readonly quantidade: number,
